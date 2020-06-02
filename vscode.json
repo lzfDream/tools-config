@@ -71,5 +71,11 @@
 	},
 	"javascript.suggestionActions.enabled": true,
 	"javascript.referencesCodeLens.enabled": true,
-	"extensions.autoUpdate": false
+	"extensions.autoUpdate": false,
+	"editor.suggest.localityBonus": true,
+	"search.showLineNumbers": true,
+	"editor.lineNumbers": "relative",
+	"vim.foldfix": true,
+	"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google,  IndentWidth:4}",
+	"vim.hlsearch": true
 }
