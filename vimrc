@@ -143,3 +143,9 @@ let g:airline_theme='owo'
 " 显示tab和buf
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
+let g:airline_section_a = airline#section#create(['mode', 'branch'])
+let g:airline_section_b = airline#section#create(['hunks', 'branch'])
+let g:airline_section_c = airline#section#create(['%M ', '%F'])
+let g:airline_section_x = airline#section#create([''])
+let g:airline_section_y = airline#section#create(['', '%Y'])
+let g:airline_section_z = airline#section#create(['l %l/%L, c %v %P'])
