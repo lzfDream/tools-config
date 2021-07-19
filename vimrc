@@ -1,5 +1,3 @@
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
 set fileencoding=utf-8
 syntax on
 syntax enable
@@ -24,7 +22,7 @@ set foldmethod=marker
 set foldlevelstart=99
 set fileformat=unix
 
-set laststatus=1
+set laststatus=2
 set cindent
 set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s
 highlight Comment ctermfg=2
@@ -48,12 +46,13 @@ nnoremap <leader>fU :execute 'CtrlPFunky' .expand('<cword>')<Cr>
 inoremap jj <Esc>
 inoremap <leader>ret if (iRet != 0) {<Cr>return iRet;<Cr>}<esc>
 map <C-n> :NERDTree<CR>
-map <C-p> :LeaderfFile<CR>
-"map <C-S-o> :LeaderfFunction<CR>
+
+" map <C-p> :LeaderfFile<CR>
+" map <C-S-o> :LeaderfFunction<CR>
 
 call plug#begin()
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -65,27 +64,35 @@ Plug 'jistr/vim-nerdtree-tabs'
 " 可以在导航目录中看到 git 版本信息
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
-Plug 'https://github.com/fatih/vim-go', {'do': ':GoUpdateBinaries'}
+" Plug 'https://github.com/fatih/vim-go', {'do': ':GoUpdateBinaries'}
 
 Plug 'junegunn/vim-easy-align'
 " 查看当前代码文件中的变量和函数列表的插件，
 " 可以切换和跳转到代码中对应的变量和函数的位置
 " 大纲式导航, Go 需要 https://github.com/jstemmer/gotags 支持
-Plug 'jstemmer/gotags'
-Plug 'majutsushi/tagbar'
+" Plug 'jstemmer/gotags'
+" Plug 'majutsushi/tagbar'
 " 有道词典在线翻译
-Plug 'ianva/vim-youdao-translater'
+" Plug 'ianva/vim-youdao-translater'
 
 " 代码自动完成，安装完插件还需要额外配置才可以使用
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " 可以在 vim 中使用 tab 补全
 Plug 'vim-scripts/SuperTab'
 
 " 可以在 vim 中自动完成
 Plug 'Shougo/neocomplete.vim'
+
+" 模糊查找文件
+Plug 'ctrlpvim/ctrlp.vim'
+
+" 彩色括号
+Plug 'kien/rainbow_parentheses.vim'
+" git
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 "==============================================================================
@@ -106,3 +113,33 @@ let g:go_highlight_methods = 1
 let g:go_highlight_generate_tags = 1
 
 let g:godef_split=2
+
+" rainbow_parenthsis
+let g:rbpt_colorpairs = [
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" airline
+let g:airline_theme='owo'
+" 显示tab和buf
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#hunks#enabled = 0
