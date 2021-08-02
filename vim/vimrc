@@ -60,20 +60,25 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'preservim/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'jistr/vim-nerdtree-tabs'
 " 可以在导航目录中看到 git 版本信息
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" 模糊搜索文件
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Plug 'https://github.com/fatih/vim-go', {'do': ':GoUpdateBinaries'}
 
-Plug 'junegunn/vim-easy-align'
+" 快速对齐
+" Plug 'junegunn/vim-easy-align'
+
 " 查看当前代码文件中的变量和函数列表的插件，
 " 可以切换和跳转到代码中对应的变量和函数的位置
 " 大纲式导航, Go 需要 https://github.com/jstemmer/gotags 支持
 " Plug 'jstemmer/gotags'
 " Plug 'majutsushi/tagbar'
+
 " 有道词典在线翻译
 " Plug 'ianva/vim-youdao-translater'
 
@@ -81,18 +86,16 @@ Plug 'junegunn/vim-easy-align'
 " Plug 'Valloric/YouCompleteMe'
 
 " 可以在 vim 中使用 tab 补全
-Plug 'vim-scripts/SuperTab'
+" Plug 'vim-scripts/SuperTab'
 
 " 可以在 vim 中自动完成
-Plug 'Shougo/neocomplete.vim'
-
-" 模糊查找文件
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'Shougo/neocomplete.vim'
 
 " 彩色括号
 Plug 'kien/rainbow_parentheses.vim'
 " git
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "==============================================================================
@@ -143,9 +146,14 @@ let g:airline_theme='owo'
 " 显示tab和buf
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#branch#enabled = 1
+
+let g:airline_left_sep = '▶ '
+let g:airline_right_sep = ' ◀'
+let g:airline_symbols_branch = '⎇'
 let g:airline_section_a = airline#section#create(['mode', 'branch'])
 let g:airline_section_b = airline#section#create(['hunks', 'branch'])
-let g:airline_section_c = airline#section#create(['%M ', '%f'])
+let g:airline_section_c = airline#section#create(['%M ', '%t'])
 let g:airline_section_x = airline#section#create([''])
 let g:airline_section_y = airline#section#create(['', '%Y'])
 let g:airline_section_z = airline#section#create(['l %l/%L, c %v %P'])
