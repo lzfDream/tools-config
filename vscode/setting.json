@@ -1,81 +1,166 @@
 {
-	"editor.fontSize": 15,
-	"workbench.startupEditor": "newUntitledFile",
-	"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-	"window.zoomLevel": 2,
-	"explorer.confirmDelete": false,
-	"explorer.confirmDragAndDrop": false,
-	"editor.formatOnPaste": true,
-	"editor.formatOnType": true,
-	"editor.minimap.renderCharacters": false,
-	"files.enableTrash": false,
-	"workbench.enableExperiments": false,
-	"update.enableWindowsBackgroundUpdates": false,
-	"workbench.activityBar.visible": true,
-	"editor.renderWhitespace": "all",
-	"editor.renderControlCharacters": false,
-	"breadcrumbs.enabled": true,
-	"files.autoSave": "afterDelay",
-	"files.autoSaveDelay": 300000,
-	"http.proxySupport": "on",
-	"update.mode": "manual",
-	"vim.insertModeKeyBindings": [
-		{
-			"before": [
-				"j",
-				"j"
-			],
-			"after": [
-				"<ESC>"
-			],
-		}
-	],
-	"go.useLanguageServer": true,
-	"editor.wordWrap": "on",
-	"diffEditor.renderSideBySide": true,
-	"C_Cpp.updateChannel": "Insiders",
-	"git.autorefresh": false,
-	"git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
-	"files.exclude": {
-		"**/.git": false
-	},
-	"editor.tabSize": 2,
-	"editor.suggestSelection": "first",
-	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-	"vim.useCtrlKeys": false,
-	"vim.useSystemClipboard": true,
-	"go.autocompleteUnimportedPackages": true,
-	"files.eol": "\n",
-	"editor.quickSuggestions": {
-		"other": true,
-		"comments": true,
-		"strings": true
-	},
-	"gitProjectManager.baseProjectsFolders": [
-		"E:\\me\\code"
-	],
-	"[go]": {
-		"editor.insertSpaces": false,
-		"editor.formatOnSave": true,
-		"editor.codeActionsOnSave": {
-			"source.organizeImports": true
-		},
-		"editor.tabSize": 4,
-		"editor.renderFinalNewline": false
-	},
-	"[javascript]": {
-		"editor.insertSpaces": true,
-		"editor.formatOnSave": true,
-		"editor.tabSize": 2,
-		"editor.renderFinalNewline": true,
-	},
-	"javascript.suggestionActions.enabled": true,
-	"javascript.referencesCodeLens.enabled": true,
-	"extensions.autoUpdate": false,
-	"editor.suggest.localityBonus": true,
-	"search.showLineNumbers": true,
-	"editor.lineNumbers": "relative",
-	"vim.foldfix": true,
-	"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google,  IndentWidth:4}",
-	"vim.hlsearch": true
+    // 通用设置
+    "editor.fontSize": 15,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": true, // 该项为true时 会根据打开文件自动检测tabSize和insertSpaces
+    "extensions.closeExtensionDetailsOnViewChange": false,
+    "editor.renderFinalNewline": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.renderWhitespace": "all", // 显示tab和space
+    "editor.renderControlCharacters": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.wordWrap": "on",
+    "diffEditor.renderSideBySide": true,
+    "editor.suggestSelection": "first",
+    "editor.suggest.localityBonus": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.acceptSuggestionOnEnter": false, // 按回车键不会补全
+    "editor.suggest.snippetsPreventQuickSuggestions": false, // 解决代码片段里不能提示补全
+    "workbench.startupEditor": "newUntitledFile",
+    // 文件设置
+    "files.enableTrash": false,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 300000,
+    "files.eol": "\n", // 换行符
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe", // 设置终端为gitbash
+    "window.zoomLevel": 2,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.enableExperiments": false,
+    "workbench.activityBar.visible": true,
+    "breadcrumbs.enabled": true,
+    "http.proxySupport": "on",
+    "update.mode": "manual", // 禁用自动更新 手动更新
+    "extensions.autoUpdate": true, // 扩展自动更新
+    "extensions.ignoreRecommendations": true, // 不显示扩展的建议通知
+    "remote.SSH.remotePlatform": {
+        "192.168.182.128": "linux"
+    },
+    "search.showLineNumbers": true,
+    // tabnine
+    "tabnine.experimentalAutoImports": true,
+    // vim 插件
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<ESC>"
+            ],
+        }
+    ], // 关闭vim的ctrl快捷键
+    "vim.useSystemClipboard": true, // 折叠处移动不会自动展开代码
+    "vim.hlsearch": true, // s搜索高亮
+    "vim.foldfix": true,
+    // git
+    "git.autorefresh": false,
+    "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
+    "files.exclude": {
+        "**/.git": false
+    },
+    // 同步设置插件
+    "sync.gist": "54a1ba447f62f4e31f70bf69d046958f",
+    // cpp
+    "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google,  IndentWidth:4}",
+    // go
+    "[go]": {
+        // 格式化
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+        // 保存时的动作
+        "editor.codeActionsOnSave": {
+            // 自动导入包
+            "source.organizeImports": true,
+            "source.fixAll": true,
+        },
+    },
+    "[go.mod]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+    },
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.autocompleteUnimportedPackages": true, // 提示中包含未导入的包
+    // gocode使用的包查找规则
+    "go.gocodePackageLookupMode": "go",
+    // 转到接口实现 依赖于gopls
+    "go.gotoSymbol.includeImports": true,
+    "go.inferGopath": true,
+    "go.formatTool": "gofmt",
+    "go.formatFlags": [
+        "-s",
+        "-w"
+    ],
+    "go.lintTool": "golint",
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "go.docsTool": "gogetdoc",
+    "go.buildOnSave": "workspace",
+    "go.lintOnSave": "package",
+    "go.vetOnSave": "package",
+    "go.coverOnSave": false,
+    "gopls": {
+        // Add parameter placeholders when completing a function.
+        "usePlaceholders": false,
+        // If true, enable additional analyses with staticcheck.
+        // Warning: This will significantly increase memory usage.
+        "staticcheck": false,
+        "completeUnimported": true, // 自动完成未导入的包
+        "deepCompletion": true,    // 启用深度完成
+    },
+    // 关闭 golint 错误提示
+    "go.lintFlags": [
+        "--disable=all",
+        "--enable=errcheck"
+    ],
+    "go.testOnSave": false,
+    "go.languageServerExperimentalFeatures": {
+    },
+    // html
+    "[html]": {
+        "editor.suggest.insertMode": "replace",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.renderFinalNewline": true,
+    },
+    // javascript
+    "[javascript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.renderFinalNewline": true,
+    },
+    "javascript.suggestionActions.enabled": true,
+    "javascript.referencesCodeLens.enabled": true,
+    "[cpp]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.renderFinalNewline": true,
+    },
+    "terminal.integrated.rendererType": "dom",
+    "files.insertFinalNewline": true,
+    "notebook.diff.enablePreview": false,
+    "workbench.editor.enablePreview": false,
+    "editor.rename.enablePreview": false,
+    "editor.formatOnSaveMode": "modifications",
+    "leetcode.endpoint": "leetcode-cn",
+    "leetcode.workspaceFolder": "/Users/l/code/go",
+    "leetcode.defaultLanguage": "golang",
+    "leetcode.hint.configWebviewMarkdown": false,
+    "leetcode.hint.commentDescription": false,
+    "leetcode.hint.commandShortcut": false,
+    "cSpell.userWords": [
+        "recal",
+        "stageid"
+    ],
+    "git.autofetch": true,
 }
