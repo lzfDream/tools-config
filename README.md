@@ -6,3 +6,9 @@
 
 ## vscode
 1. `cp vscode/ ~/vscode/`
+
+## git
+1. `cp gitconfig ~/.gitconfig`
+
+## bashrc
+1. `cp bashrc ~/.bashrc`

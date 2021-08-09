@@ -1,0 +1,15 @@
+[user]
+	email =
+	name =
+[core]
+	quotepath = false
+[color]
+	ui = true
+[merge]
+	conflictstyle = diff3
+[push]
+	default = matching
+[credential]
+	helper = store
+[help]
+	autocorrect = 1
