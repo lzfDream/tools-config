@@ -13,3 +13,12 @@
 	helper = store
 [help]
 	autocorrect = 1
+
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	s = status
+	co = checkout
+	cob = checkout -b
+	ci = commit
+	com = commit -m
+	br = branch
