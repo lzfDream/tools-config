@@ -22,3 +22,7 @@
 	ci = commit
 	com = commit -m
 	br = branch
+	p = pull
+	pu = push
+	a = add
+	aa = add ./
