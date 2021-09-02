@@ -8,7 +8,7 @@
 1. `cp vscode/ ~/vscode/`
 
 ## git
-1. `cp gitconfig ~/.gitconfig`
+1. `cp git/gitconfig ~/.gitconfig`
 
 ## bashrc
-1. `cp bashrc ~/.bashrc`
+1. `cp bash/bashrc ~/.bashrc`
