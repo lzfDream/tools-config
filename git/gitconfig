@@ -5,6 +5,9 @@
 # 中文支持
 [core]
 	quotepath = false
+[i18n]
+	logoutputencoding = utf-8
+	commitencoding = utf-8
 
 # 开启颜色
 [color]
