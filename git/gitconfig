@@ -1,28 +1,41 @@
 [user]
 	email =
 	name =
+	
+# 中文支持
 [core]
 	quotepath = false
+
+# 开启颜色
 [color]
 	ui = true
+	
+# 合并冲突diff风格
 [merge]
 	conflictstyle = diff3
+	
+# 默认仅推送当前分支
 [push]
-	default = matching
+	default = simple
+	
+# 记住密码
 [credential]
 	helper = store
+	
+# 自动修正指令
 [help]
 	autocorrect = 1
 
+# 指令别名
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	s = status
 	co = checkout
 	cob = checkout -b
 	ci = commit
-	com = commit -m
-	br = branch
+	cim = commit -m
+	b = branch
+	db = branch -D
 	p = pull -p
-	pu = push
 	a = add
 	aa = add ./
