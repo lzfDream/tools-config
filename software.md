@@ -29,3 +29,4 @@
 - enca: 显示/转换 文件编码
 - dos2unix/unix2dos: 文件换行符转换
 - clang-format: cpp格式化
+- pystitcher: 合并pdf 自动生成书签
