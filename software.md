@@ -20,6 +20,7 @@
 
 ## windows:
 - everything: 快速文件搜索
+- [IrfanView: 看图工具](https://www.irfanview.com/)
 
 ## 终端工具:
 - fish: shell
