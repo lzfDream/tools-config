@@ -17,6 +17,7 @@
 - Pixea: 图片查看
 - homebrew: 软件包管理
 - eul: 资源监控
+- [Skim: pdf阅读](https://skim-app.sourceforge.io/)
 
 ## windows:
 - everything: 快速文件搜索
