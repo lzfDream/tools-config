@@ -1,6 +1,6 @@
 ## 通用:
 - snipaste: 快速截图贴图
-- tabby: 终端 主题`OneHalfDark`
+- [tabby: 终端 主题`OneHalfDark`](https://github.com/Eugeny/tabby/releases)
 - 松果云加速
 - 搜狗输入法
 
