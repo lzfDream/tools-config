@@ -1,6 +1,6 @@
 ## 通用:
 - snipaste: 快速截图贴图
-- [tabby: 终端 主题`OneHalfDark`](https://github.com/Eugeny/tabby/releases)
+- tabby: 终端 主题`OneHalfDark`  [下载链接](https://github.com/Eugeny/tabby/releases)
 - 松果云加速
 - 搜狗输入法
 
@@ -17,11 +17,11 @@
 - Pixea: 图片查看
 - homebrew: 软件包管理
 - eul: 资源监控
-- [Skim: pdf阅读](https://skim-app.sourceforge.io/)
+- Skim: pdf阅读 [下载链接](https://skim-app.sourceforge.io/)
 
 ## windows:
 - everything: 快速文件搜索
-- [IrfanView: 看图工具](https://www.irfanview.com/)
+- IrfanView: 看图工具 [下载链接](https://www.irfanview.com/)
 
 ## 终端工具:
 - fish: shell
