@@ -20,7 +20,7 @@
 - Skim: pdf阅读 [下载链接](https://skim-app.sourceforge.io/)
 
 ## windows:
-- everything: 快速文件搜索
+- everything: 快速文件搜索 [下载链接](https://www.voidtools.com/zh-cn/)
 - IrfanView: 看图工具 [下载链接](https://www.irfanview.com/)
 
 ## 终端工具:
