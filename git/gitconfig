@@ -5,6 +5,7 @@
 # 中文支持
 [core]
 	quotepath = false
+	autocrlf = false # 关闭自动修改行尾符
 [i18n]
 	logoutputencoding = utf-8
 	commitencoding = utf-8
