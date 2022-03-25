@@ -3,6 +3,7 @@
 - tabby: 终端 主题`OneHalfDark`  [下载链接](https://github.com/Eugeny/tabby/releases)
 - 松果云加速
 - 搜狗输入法
+- AnotherRedisDesktopManager: redis客户端 [下载链接](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
 
 ## macos:
 - Hidden Bar: 状态栏控制
