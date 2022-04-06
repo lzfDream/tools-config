@@ -4,6 +4,7 @@
 - 松果云加速
 - 搜狗输入法
 - AnotherRedisDesktopManager: redis客户端 [下载链接](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
+- git-lfs [下载链接](https://github.com/git-lfs/git-lfs/releases)
 
 ## macos:
 - Hidden Bar: 状态栏控制
