@@ -42,6 +42,6 @@
 	db = branch -D
 	p = pull -p
 	a = add
-	aa = add ./
+	aa = add --all :/
 	diffc = diff --cached
 	clear = reset --hard
