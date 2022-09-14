@@ -18,6 +18,7 @@
 - Skim: pdf阅读 [下载链接](https://skim-app.sourceforge.io/)
 - Maccy: 剪切板历史 github
 - ITraffic: 网速显示 github
+- SlowQuitApps: 阻止cmd q [下载链接](https://github.com/dteoh/SlowQuitApps)
 
 ## windows:
 - everything: 快速文件搜索 [下载链接](https://www.voidtools.com/zh-cn/)
