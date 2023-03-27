@@ -1,5 +1,5 @@
 ## 通用:
-- snipaste: 快速截图贴图
+- snipaste: 快速截图贴图 [下载链接](https://zh.snipaste.com/)
 - tabby: 终端 主题`OneHalfDark`  [下载链接](https://github.com/Eugeny/tabby/releases)
 - 松果云加速
 - 搜狗输入法
