@@ -57,7 +57,7 @@ AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 
 # 允许短的循环保持在同一行
-AllowShortLoopsOnASingleLine: true
+AllowShortLoopsOnASingleLine: false
 
 # 总是在定义返回类型后换行(deprecated)
 AlwaysBreakAfterDefinitionReturnType: None
@@ -124,7 +124,7 @@ BreakBeforeBinaryOperators: None
 #   注：这里认为语句块也属于函数
 
 # 大括号的换行规则
-BreakBeforeBraces: Custom
+BreakBeforeBraces: Attach
 
 # 三元运算操作符换行位置（?和: 在新行还是尾部）
 BreakBeforeTernaryOperators: true
@@ -174,10 +174,8 @@ ForEachMacros:  [ foreach, Q_FOREACH, BOOST_FOREACH ]
 # 对#include进行排序，匹配了某正则表达式的#include拥有对应的优先级，匹配不到的则默认优先级为INT_MAX(优先级越小排序越靠前)，
 #   可以定义负数优先级从而保证某些#include永远在最前面
 IncludeCategories:
-  - Regex:  'gamepch.h'
+  - Regex:  'stdafx.h'
     Priority: -1
-  - Regex:  'gmplayer.h'
-    Priority: 1
 
 # 缩进case标签
 IndentCaseLabels: false
@@ -294,7 +292,7 @@ SpacesInConditionalStatement: false
 # 在圆括号的(后和)前添加空格
 SpacesInParentheses: false
 
-# 在方括号的[后和]前添加空格，lamda表达式和未指明大小的数组的声明不受影响
+# 在方括号的[后和]前添加空格，lambda表达式和未指明大小的数组的声明不受影响
 SpacesInSquareBrackets: false
 
 # 标准: Cpp03, Cpp11, Auto
