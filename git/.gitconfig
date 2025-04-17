@@ -21,6 +21,7 @@
 # 默认仅推送当前分支
 [push]
 	default = simple
+	autoSetupRemote = true
 	
 # 记住密码
 [credential]
