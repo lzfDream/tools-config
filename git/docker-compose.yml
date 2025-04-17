@@ -1,0 +1,25 @@
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:17.11.0-ce.0 # 选择最新的稳定版本 gitlab一般xx.11.0-ce.0 lts版本
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.example.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # Add any other gitlab.rb configuration here, each on its own line
+        external_url 'http://192.168.0.10:8929'
+    ports:
+      - '192.168.0.10:8929:80'
+      - '192.168.0.10:22:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
+
+# 内网部署步骤
+# 指定环境变量启动 GITLAB_HOME=../docker/gitlab docker compose up -d
+# http://192.168.0.10:8929 访问 root默认密码在 ../docker/gitlab/config/initial_root_password 中
+# 修改root密码 注册其他账户
+# ssh-keygen -t rsa -b 4096 创建密钥 网页端加入ssh公钥
+# ssh -T git@192.168.0.10 测试连接
