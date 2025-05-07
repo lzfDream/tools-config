@@ -1,4 +1,5 @@
 import os
+import sys
 from pypdf import PdfWriter
 
 def merge_pdfs(input_folder, output_file):
@@ -25,7 +26,16 @@ def merge_pdfs(input_folder, output_file):
 
 # 使用示例
 if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Please input a directory path")
+        sys.exit(1)
+
+    path = sys.argv[1]
+    if not os.path.isdir(path):
+        print(f"Invalid directory path: {path}")
+        sys.exit(1)
+
     merge_pdfs(
-        input_folder='./pdf',  # PDF文件所在文件夹
+        input_folder=path,  # PDF文件所在文件夹
         output_file='merged.pdf'  # 合并后的输出文件名
     )
