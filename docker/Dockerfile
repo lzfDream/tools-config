@@ -30,6 +30,11 @@ RUN apt-get install -y nodejs npm
 # 安装c/c++
 RUN apt-get install -y clang make cmake
 
+# 设置中文
+ENV LANG=zh_CN.UTF-8 \
+    LANGUAGE=zh_CN:zh \
+    LC_ALL=zh_CN.UTF-8
+
 WORKDIR /app
 
 COPY ./ tools_config
