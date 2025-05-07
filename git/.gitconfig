@@ -1,7 +1,10 @@
 [user]
 	email =
 	name =
-	
+
+[init]
+	defaultBranch = master
+
 # 中文支持
 [core]
 	quotepath = false
@@ -13,20 +16,20 @@
 # 开启颜色
 [color]
 	ui = true
-	
+
 # 合并冲突diff风格
 [merge]
 	conflictstyle = diff3
-	
+
 # 默认仅推送当前分支
 [push]
 	default = simple
 	autoSetupRemote = true
-	
+
 # 记住密码
 [credential]
 	helper = store
-	
+
 # 自动修正指令
 [help]
 	autocorrect = 1
