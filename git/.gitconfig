@@ -49,3 +49,5 @@
 	aa = add --all :/
 	diffc = diff --cached
 	clear = reset --hard
+	ig = update-index --assume-unchanged
+	igc = update-index --no-assume-unchanged
