@@ -7,3 +7,6 @@ services:
     container_name: s1
     hostname: l
     command: sh -c 'trap "exit" TERM; while true; do sleep 1; done'
+    volumes:
+      - ../:/app/code
+      - ///var/run/docker.sock:/var/run/docker.sock
