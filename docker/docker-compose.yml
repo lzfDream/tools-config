@@ -6,7 +6,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: s1
     hostname: l
-    command: ["sh", "-c", "/app/tools-config/docker/run.sh"]
+    command: ["/app/tools-config/docker/run.sh"]
     volumes:
       - ../:/app/tools-config
       - ///var/run/docker.sock:/var/run/docker.sock
