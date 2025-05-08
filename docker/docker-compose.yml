@@ -6,7 +6,9 @@ services:
       dockerfile: docker/Dockerfile
     container_name: s1
     hostname: l
-    command: sh -c 'trap "exit" TERM; while true; do sleep 1; done'
+    command: ["sh", "-c", "/app/tools-config/docker/run.sh"]
     volumes:
-      - ../:/app/code
+      - ../:/app/tools-config
       - ///var/run/docker.sock:/var/run/docker.sock
+      - ./.zsh_history:/root/.zsh_history
+      - ./.z:/root/.z

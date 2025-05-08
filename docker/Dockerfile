@@ -46,14 +46,4 @@ ENV LANG=zh_CN.UTF-8
 
 WORKDIR /app
 
-COPY ./ tools_config
-
-RUN cd tools_config && \
-    cp bash/.bashrc ~/.bashrc && \
-    cat zsh/.zshrc >> ~/.zshrc && \
-    cp -r vim/autoload ~/.vim && \
-    cp vim/.vimrc ~/.vimrc && \
-    cp git/.gitconfig ~/.gitconfig && \
-    rm -rf /app/tools_config
-
 CMD ["zsh"]
