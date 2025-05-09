@@ -14,3 +14,16 @@ services:
       - ///var/run/docker.sock:/var/run/docker.sock
       - ./.zsh_history:/root/.zsh_history
       - ./.z:/root/.z
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "4406:3306"
+
+  redis:
+    image: redis:7.4.0
+    ports:
+      - "63379:6379"
+    command: redis-server --requirepass 123456
