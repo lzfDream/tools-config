@@ -1,3 +1,5 @@
+name: gitlab
+
 services:
   gitlab:
     image: gitlab/gitlab-ce:17.11.0-ce.0 # 选择最新的稳定版本 gitlab一般xx.11.0-ce.0 lts版本

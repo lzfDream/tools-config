@@ -1,3 +1,5 @@
+name: dev
+
 services:
   s1:
     image: s1:latest
