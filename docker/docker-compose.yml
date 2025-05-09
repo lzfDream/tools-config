@@ -8,6 +8,7 @@ services:
       dockerfile: docker/Dockerfile
     container_name: s1
     hostname: l
+    restart: always
     command: ["/app/tools-config/docker/run.sh"]
     volumes:
       - ../:/app/tools-config
@@ -17,6 +18,8 @@ services:
 
   mysql:
     image: mysql:8.0
+    container_name: mysql
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 123456
     ports:
@@ -24,6 +27,8 @@ services:
 
   redis:
     image: redis:7.4.0
+    container_name: redis
+    restart: always
     ports:
       - "63379:6379"
     command: redis-server --requirepass 123456
