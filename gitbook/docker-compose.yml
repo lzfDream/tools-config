@@ -1,0 +1,21 @@
+name: gitbook
+
+services:
+  book:
+    image: mygitbook:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: book
+    ports:
+      - "20001:4000"
+    volumes:
+      - ${BOOK_PATH}:/srv/gitbook
+      - ./config:/etc/gitbook-config/
+    command: gitbook serve
+
+  create:
+    image: mygitbook:latest
+    volumes:
+      - ${BOOK_PATH}:/srv/gitbook
+    command: gitbook init

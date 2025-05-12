@@ -1,0 +1,59 @@
+{
+    "title": "标题",
+    "description": "描述信息",
+    "author": "作者",
+    "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.1",
+    "root": ".",
+    "links": {
+        "sidebar": {
+            "sidebar标题": "sidebar地址"
+        }
+    },
+    "plugins": [
+        "-lunr",
+        "-search",
+        "-sharing",
+        "-fontsettings",
+        "highlight",
+        "livereload",
+        "-searchpro",
+        "expandable-chapters-small",
+        "splitter",
+        "back-to-top-button",
+        "hide-element",
+        "code",
+        "custom-favicon",
+        "page-toc-button",
+        "tbfed-pagefooter",
+        "-rss"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "项目仓库地址"
+        },
+        "hide-element": {
+            "elements": [
+                ".gitbook-link"
+            ]
+        },
+        "favicon": "assets/images/favicon.png",
+        "page-toc-button": {
+            "maxTocDepth": 2,
+            "minTocSize": 2
+        },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright &copy 版权信息",
+            "modify_label": "该文件修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "rss": {
+            "title": "标题",
+            "description": "描述信息",
+            "author": "作者",
+            "feed_url": "https://xxx.xxx.xxx/rss",
+            "site_url": "https://xxx.xxx.xxx/"
+        }
+    }
+}

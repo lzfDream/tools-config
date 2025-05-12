@@ -3,6 +3,7 @@ alias do='docker'
 alias dop='docker compose'
 alias dops="docker ps --format 'table {{.Image}}\t{{.Names}}'"
 alias doexec='docker exec -it'
+alias dotestc='docker run -it --rm'
 alias objdump='llvm-objdump-14 -M intel -S'
 alias cat='batcat --paging=never'
 

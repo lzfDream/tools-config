@@ -5,6 +5,9 @@ RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && 
     sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     apt-get update
 
+# 安装常用工具
+RUN apt-get install -y vim zsh curl wget git bat unzip
+
 # 安装Python3和pip3
 RUN apt-get install -y python3 python3-pip
 
@@ -22,12 +25,11 @@ RUN apt-get install -y ca-certificates curl gnupg && \
     apt-get install -y docker-ce-cli docker-compose-plugin
 
 # 安装Node.js
-RUN apt-get install -y nodejs npm
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g bun gitbook-cli --registry=https://registry.npmmirror.com
 
 # 装的快的放后面 前面的被缓存的概率更大
-# 安装常用工具
-RUN apt-get install -y vim zsh curl wget git bat
-
 # 安装oh-my-zsh和常用插件
 RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended && \
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \

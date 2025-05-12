@@ -10,6 +10,8 @@ services:
     hostname: l
     restart: always
     command: ["/app/tools-config/docker/run.sh"]
+    ports:
+      - "55555:55555" # 开一个端口测试用
     volumes:
       - ../:/app/tools-config
       - ///var/run/docker.sock:/var/run/docker.sock
