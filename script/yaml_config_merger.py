@@ -11,6 +11,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+
 def merge_configs(source_path: Path, template_path: Path, output_path: Path):
     """
     合并两个YAML配置文件
@@ -33,18 +34,21 @@ def merge_configs(source_path: Path, template_path: Path, output_path: Path):
                     if key in template and template[key] is not None:
                         path_stack.append(key)
                         if type(source[key]) != type(template[key]):
-                            logger.error(f"Error: {path_stack} type is not match")
+                            logger.error(
+                                f"Error: {path_stack} type is not match")
                             exit(1)
                         template[key] = deep_merge(source[key], template[key])
                         path_stack.pop()
                     else:
                         path_stack.append(key)
-                        logger.warning(f"template key {path_stack} is not exist, ignore")
+                        logger.warning(
+                            f"template key {path_stack} is not exist, ignore")
                         path_stack.pop()
             elif isinstance(source, list) and isinstance(template, list):
                 for index in range(len(source)):
                     if index >= len(template):
-                        logger.error(f"Error: {path_stack} index {index} is out of range")
+                        logger.error(
+                            f"Error: {path_stack} index {index} is out of range")
                         sys.exit(1)
 
                     path_stack.append(index)
@@ -65,21 +69,62 @@ def merge_configs(source_path: Path, template_path: Path, output_path: Path):
 
         merged_config = deep_merge(source_config, template_config)
 
-        with open(output_path, 'w', encoding='utf-8') as f:
-            yaml.safe_dump(merged_config, f, default_flow_style=False, allow_unicode=True)
+        with open(output_path, 'w', encoding='utf-8', newline='\n') as f:
+            yaml.safe_dump(merged_config, f,
+                           default_flow_style=False, allow_unicode=True)
 
     except Exception as e:
         logger.error(f"Error merging configs: {e}")
 
+
 if __name__ == "__main__":
     if len(sys.argv) < 4:
-        logger.info("Usage: python merge_configs.py <source_config.yaml> <template_config.yaml> <output_config.yaml>")
+        logger.error(
+            "Usage: python merge_configs.py <template_config.yaml|dir> <source_config.yaml|dir> <output_config.yaml|dir>")
         sys.exit(1)
 
-    source = sys.argv[1]
-    template = sys.argv[2]
+    template = sys.argv[1]
+    source = sys.argv[2]
     output = sys.argv[3]
 
-    logger.info(f'start merge config: {source} -> {template} -> {output}')
-    merge_configs(Path(source), Path(template), Path(output))
+    template_files = []
+    source_files = []
+    output_files = []
+
+    # 处理template是目录的情况
+    template_path = Path(template)
+    if template_path.is_dir():
+        # 确保source和output也是目录
+        output_path = Path(output)
+        source_path = Path(source)
+        if not output_path.is_dir() or not source_path.is_dir():
+            logger.error(
+                f"source and output must be a directory when template is a directory")
+            sys.exit(1)
+
+        # 遍历目录下所有yaml文件
+        template_files = list(template_path.glob('*.yaml')) + \
+            list(template_path.glob('*.yml'))
+        if not template_files:
+            logger.error(
+                f"No YAML files found in template directory: {template}")
+            sys.exit(1)
+
+        # 处理每个template文件
+        source_files = [source_path /
+                        template_file.name for template_file in template_files]
+        output_files = [output_path /
+                        template_file.name for template_file in template_files]
+    else:
+        template_files.append(template)
+        source_files.append(source)
+        output_files.append(output)
+
+    for template, source, output in zip(template_files, source_files, output_files):
+        # 处理单个文件的情况
+        logger.info('---------------------------------')
+        logger.info(
+            f'start merge config: {template.as_posix()} {source.as_posix()} {output.as_posix()}')
+        merge_configs(source, template, output)
+
     logger.info('complete')
