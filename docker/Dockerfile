@@ -48,4 +48,8 @@ ENV LANG=zh_CN.UTF-8
 
 WORKDIR /app
 
+COPY docker/entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 CMD ["zsh"]

@@ -9,18 +9,15 @@ services:
     container_name: s1
     hostname: l
     restart: always
-    command: ["/app/tools-config/docker/run.sh"]
+    command: sh -c 'trap "exit" TERM; while true; do sleep 1; done'
     ports:
       - "55555:55555" # 开一个端口测试用
     volumes:
       - ../:/app/tools-config
       - ///var/run/docker.sock:/var/run/docker.sock
-      - ./.zsh_history:/root/.zsh_history
-      - ./.z:/root/.z
 
   mysql:
     image: mysql:8.0
-    container_name: mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 123456
@@ -29,7 +26,6 @@ services:
 
   redis:
     image: redis:7.4.0
-    container_name: redis
     restart: always
     ports:
       - "63379:6379"
