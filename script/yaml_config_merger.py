@@ -1,4 +1,4 @@
-import sys;
+import sys
 import yaml
 import logging
 from pathlib import Path
