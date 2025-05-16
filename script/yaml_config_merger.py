@@ -12,7 +12,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def merge_configs(source_path: Path, template_path: Path, output_path: Path):
+def merge_configs(template_path: Path, source_path: Path, output_path: Path):
     """
     合并两个YAML配置文件
     :param source_path: 包含要覆盖值的源配置文件
@@ -77,6 +77,25 @@ def merge_configs(source_path: Path, template_path: Path, output_path: Path):
         logger.error(f"Error merging configs: {e}")
 
 
+def merge_configs_path(template_path: Path, source_path: Path, output_path: Path):
+    # 遍历目录下所有yaml文件
+    template_files = list(template_path.glob('*.yaml')) + \
+        list(template_path.glob('*.yml'))
+    if not template_files:
+        logger.error(
+            f"No YAML files found in template directory: {template_path}")
+        return
+
+    # 处理每个template文件
+    source_files = [source_path /
+                    template_file.name for template_file in template_files]
+    output_files = [output_path /
+                    template_file.name for template_file in template_files]
+    for template, source, output in zip(template_files, source_files, output_files):
+        logger.info('---------------------------------')
+        logger.info(f'start merge config: {template.as_posix()} {source.as_posix()} {output.as_posix()}')
+        merge_configs(template, source, output)
+
 if __name__ == "__main__":
     if len(sys.argv) < 4:
         logger.error(
@@ -102,29 +121,9 @@ if __name__ == "__main__":
                 f"source and output must be a directory when template is a directory")
             sys.exit(1)
 
-        # 遍历目录下所有yaml文件
-        template_files = list(template_path.glob('*.yaml')) + \
-            list(template_path.glob('*.yml'))
-        if not template_files:
-            logger.error(
-                f"No YAML files found in template directory: {template}")
-            sys.exit(1)
-
-        # 处理每个template文件
-        source_files = [source_path /
-                        template_file.name for template_file in template_files]
-        output_files = [output_path /
-                        template_file.name for template_file in template_files]
+        merge_configs_path(template_path, source_path, output_path)
     else:
-        template_files.append(template)
-        source_files.append(source)
-        output_files.append(output)
-
-    for template, source, output in zip(template_files, source_files, output_files):
-        # 处理单个文件的情况
-        logger.info('---------------------------------')
-        logger.info(
-            f'start merge config: {template.as_posix()} {source.as_posix()} {output.as_posix()}')
-        merge_configs(source, template, output)
+        logger.info(f'start merge config: {template.as_posix()} {source.as_posix()} {output.as_posix()}')
+        merge_configs(template, source, output)
 
     logger.info('complete')
