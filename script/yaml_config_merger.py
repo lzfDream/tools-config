@@ -1,11 +1,15 @@
+import os
+import shutil
 import sys
 import yaml
 import logging
 from pathlib import Path
 
+os.chdir(Path(__file__).parent)
+
 logging.basicConfig(
     level=logging.INFO,
-    format='[%(levelname)s] %(message)s',
+    format='[%(levelname)s] %(filename)s:%(lineno)d %(message)s',
     handlers=[logging.StreamHandler()]
 )
 
@@ -20,6 +24,12 @@ def merge_configs(template_path: Path, source_path: Path, output_path: Path):
     :param output_path: 输出合并后的配置文件
     """
     try:
+        if template_path.exists() and not source_path.exists():
+            # 模板文件存在修改的文件不存在 直接将模板文件复制
+            logger.info(
+                f'copy config: {template_path.as_posix()} {output_path.as_posix()}')
+            shutil.copy(template_path, output_path)
+            return
         with open(source_path, 'r', encoding='utf-8') as f:
             source_config = yaml.safe_load(f) or {}
 
@@ -95,6 +105,23 @@ def merge_configs_path(template_path: Path, source_path: Path, output_path: Path
         logger.info('---------------------------------')
         logger.info(f'start merge config: {template.as_posix()} {source.as_posix()} {output.as_posix()}')
         merge_configs(template, source, output)
+
+
+def copy_conf_path(template_path: Path, output_path: Path):
+    # 将模板目录下的所有yaml文件复制到输出目录
+    template_files = list(template_path.glob('*.yaml')) + \
+        list(template_path.glob('*.yml'))
+    if not template_files:
+        logger.error(
+            f"No YAML files found in template directory: {template_path}")
+        return
+    # 处理每个template文件
+    output_files = [output_path /
+                    template_file.name for template_file in template_files]
+    for template, output in zip(template_files, output_files):
+        logger.info(f'copy config: {template.as_posix()} {output.as_posix()}')
+        shutil.copy(template, output)
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 4:
