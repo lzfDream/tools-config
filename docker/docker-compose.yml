@@ -20,7 +20,7 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: "123456"
     ports:
       - "4406:3306"
 
@@ -29,4 +29,4 @@ services:
     restart: always
     ports:
       - "63379:6379"
-    command: redis-server --requirepass 123456
+    command: redis-server --requirepass "123456"

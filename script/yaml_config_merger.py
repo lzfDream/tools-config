@@ -27,7 +27,7 @@ def merge_configs(template_path: Path, source_path: Path, output_path: Path):
         if template_path.exists() and not source_path.exists():
             # 模板文件存在修改的文件不存在 直接将模板文件复制
             logger.info(
-                f'copy config: {template_path.as_posix()} {output_path.as_posix()}')
+                f'not change to copy config: {template_path.as_posix()} {output_path.as_posix()}')
             shutil.copy(template_path, output_path)
             return
         with open(source_path, 'r', encoding='utf-8') as f:

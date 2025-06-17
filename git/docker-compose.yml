@@ -5,13 +5,13 @@ services:
     image: gitlab/gitlab-ce:17.11.0-ce.0 # 选择最新的稳定版本 gitlab一般xx.11.0-ce.0 lts版本
     container_name: gitlab
     restart: always
-    hostname: 'gitlab.example.com'
+    hostname: 'gitlab.example.com:8929'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
-        external_url 'http://192.168.0.10'
+        external_url 'http://192.168.0.10:8929'
     ports:
-      - '8929:80'
+      - '8929:8929'
       - '22:22'
     volumes:
       - '$GITLAB_HOME/config:/etc/gitlab'
