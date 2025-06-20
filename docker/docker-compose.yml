@@ -9,7 +9,7 @@ services:
     container_name: s1
     hostname: l
     restart: always
-    command: sh -c 'trap "exit" TERM; while true; do sleep 1; done'
+    command: sh -c 'trap "exit" TERM INT; sleep infinity & wait'
     ports:
       - "55555:55555" # 开一个端口测试用
     volumes:
