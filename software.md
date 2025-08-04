@@ -1,11 +1,11 @@
 ## 通用:
 - snipaste: 快速截图贴图 [下载链接](https://zh.snipaste.com/)
 - tabby: 终端 主题`OneHalfDark`  [下载链接](https://github.com/Eugeny/tabby/releases)
-- 松果云加速
 - 搜狗输入法
 - AnotherRedisDesktopManager: redis客户端 [下载链接](https://github.com/qishibo/AnotherRedisDesktopManager/releases)
 - git-lfs [下载链接](https://github.com/git-lfs/git-lfs/releases)
 - arctype 数据库GUI [下载链接](https://arctype.com/)
+- BabelDOC: 翻译pdf的ai [在线地址](https://app.immersivetranslate.com/babel-doc) [github](https://github.com/funstory-ai/BabelDOC)
 
 ## macos:
 - Hidden Bar: 状态栏控制
