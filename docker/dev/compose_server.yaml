@@ -1,0 +1,21 @@
+name: dev
+
+services:
+  s1:
+    image: s1:latest
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    container_name: s1
+    hostname: l
+    restart: always
+    command: sh -c 'trap "exit" TERM INT; sleep infinity & wait'
+    ports:
+      - "55555:55555" # 开一个端口测试用
+    volumes:
+      - type: bind
+        source: ../../
+        target: /app/tools-config
+      - type: bind
+        source: ///var/run/docker.sock
+        target: /var/run/docker.sock

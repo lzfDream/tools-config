@@ -3,20 +3,19 @@ name: gitlab
 services:
   gitlab:
     image: gitlab/gitlab-ce:17.11.0-ce.0 # 选择最新的稳定版本 gitlab一般xx.11.0-ce.0 lts版本
-    container_name: gitlab
     restart: always
-    hostname: 'gitlab.example.com:8929'
+    hostname: 'gitlab.example.com:${GITLAB_PORT}'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         # Add any other gitlab.rb configuration here, each on its own line
-        external_url 'http://192.168.0.10:8929'
+        external_url 'http://192.168.0.10:${GITLAB_PORT}'
     ports:
-      - '8929:8929'
+      - '${GITLAB_PORT}:${GITLAB_PORT}'
       - '22:22'
     volumes:
-      - '$GITLAB_HOME/config:/etc/gitlab'
-      - '$GITLAB_HOME/logs:/var/log/gitlab'
-      - '$GITLAB_HOME/data:/var/opt/gitlab'
+      - '${GITLAB_HOME}/config:/etc/gitlab'
+      - '${GITLAB_HOME}/logs:/var/log/gitlab'
+      - '${GITLAB_HOME}/data:/var/opt/gitlab'
     shm_size: '256m'
 
 # 内网部署步骤

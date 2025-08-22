@@ -1,0 +1,17 @@
+name: play
+
+services:
+  komga:
+    image: gotson/komga
+    container_name: komga
+    volumes:
+      - type: bind
+        source: ../test/komga/config
+        target: /config
+      - type: bind
+        source: ../test/komga/data
+        target: /data
+    ports:
+      - ${KOMGA_PORT}:25600
+    user: "1000:1000"
+    restart: unless-stopped
