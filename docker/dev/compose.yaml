@@ -1,7 +1,7 @@
 name: dev
 
 include:
-  - compose_server.yaml
+  # - compose_server.yaml
   - compose_gitlab.yaml
 
 services:
@@ -16,6 +16,10 @@ services:
       - type: bind
         source: ../test/mysql
         target: /var/lib/mysql
+    #   - type: bind
+    #     source: ./mysql.cnf
+    #     target: /etc/mysql/conf.d/my.cnf
+    # command: sh -c "chmod 644 /etc/mysql/conf.d/my.cnf && /entrypoint.sh mysqld"
 
   redis:
     image: redis:7.4.0
