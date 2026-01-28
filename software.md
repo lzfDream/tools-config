@@ -7,6 +7,9 @@
 - arctype 数据库GUI [下载链接](https://arctype.com/)
 - BabelDOC: 翻译pdf的ai [在线地址](https://app.immersivetranslate.com/babel-doc) [github](https://github.com/funstory-ai/BabelDOC)
 
+## 浏览器插件
+- Consent-O-Matic: 开源跳过浏览器cookie设置
+
 ## macos:
 - Hidden Bar: 状态栏控制
 - iTerm: 终端
@@ -26,9 +29,27 @@
 
 ## 终端工具:
 - fish: shell
+- zsh: shell
+- oh-my-zsh: zsh美化工具
+- batcat: 查看文件 替代cat
+- dust: 查看文件目录大小 替代du
+- duf: 查看磁盘占用情况 替代df
+- exa: 查看当前目录 替代ls
+- fdfind: 搜索文件 替代find
 - z: 模糊搜索切换目录
 - go-callvis: 解析go项目调用链
 - starship: 终端美化
 - enca: 显示/转换 文件编码
 - dos2unix/unix2dos: 文件换行符转换
 - clang-format: cpp格式化
+- oh-my-posh: 跨平台美化工具 主题json.omp.json
+
+## todo
+- opentrace: 开源跨平台可视化路由追踪工具
+- snitch: 开源命令行网络连接监控工具
+- pdfcraft: 开源的pdf处理工具
+- Rabithua/Rote: 开源个人笔记
+- sqlit: 开源终端sql工具
+- zensical: 开源静态网站生成器
+- cultivation-word-simulator: 开源ai驱动的修仙世界模拟器
+- ml-sharp: 开源转化图片为3d图片

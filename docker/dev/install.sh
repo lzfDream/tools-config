@@ -56,7 +56,7 @@ sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting
 
 mv bash/.bashrc ~/
 mv vim/.vimrc ~/
-cp -r vim/autoload ~/.vim/
+mv vim/autoload ~/.vim/
 mv git/.gitconfig ~/
 
 cat zsh/.zshrc >> ~/.zshrc
