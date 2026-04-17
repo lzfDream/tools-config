@@ -2,33 +2,45 @@
 set -euo pipefail
 
 # 设置阿里云镜像源
-sed -i "s/archive.ubuntu.com/mirrors.aliyun.com/g" /etc/apt/sources.list
-sed -i "s/security.ubuntu.com/mirrors.aliyun.com/g" /etc/apt/sources.list
+mirror_url=https://mirrors.aliyun.com
+sed -i "s/archive.ubuntu.com/$mirror_url/ubuntu/g" /etc/apt/sources.list
+sed -i "s/security.ubuntu.com/$mirror_url/ubuntu/g" /etc/apt/sources.list
+export NPM_CONFIG_REGISTRY=https://registry.npmmirror.com
+export PIP_INDEX_URL=$mirror_url/pypi/simple/
+export PIP_TRUSTED_HOST=mirrors.aliyun.com
+export UV_DEFAULT_INDEX=$mirror_url/pypi/simple/
 apt-get update -qq
 
 # 安装常用工具
-apt-get install -qq -y vim zsh git bat btop duf unzip locales fonts-noto-cjk
+apt-get install -qq -y vim zsh git bat btop duf unzip locales fonts-noto-cjk eza fd-find
 locale-gen zh_CN.UTF-8
 
 # 安装Python3和pip3
 apt-get install -qq -y python3 python3-pip
+tee /etc/pip.conf << 'EOF'
+[global]
+break-system-packages = true
+EOF
+[ ! -L /usr/bin/python ] && ln -s /usr/bin/python3 /usr/bin/python
+[ ! -L /usr/bin/pip ] && ln -s /usr/bin/pip3 /usr/bin/pip
 
 # 安装httpie
 pip install httpie
 
-# 安装dust
-https -qd https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-x86_64-unknown-linux-gnu.tar.gz
-tar -xzf dust-v1.2.4-x86_64-unknown-linux-gnu.tar.gz
-mv dust-v1.2.4-x86_64-unknown-linux-gnu/dust /usr/local/bin
-chmod +x /usr/local/bin/dust
-rm -rf dust-v1.2.4-x86_64-unknown-linux-gnu.tar.gz
+# 安装 Ruff
+https -qd https://github.com/astral-sh/ruff/releases/latest/download/ruff-x86_64-unknown-linux-gnu.tar.gz -o - | tar -xzf - --strip-components=1 -C /usr/local/bin
 
-# 安装procs
-https -qd https://github.com/dalance/procs/releases/download/v0.14.10/procs-v0.14.10-x86_64-linux.zip -o procs.zip
-unzip procs.zip
-mv procs /usr/local/bin
+# 安装 UV
+https -qd https://astral.sh/uv/install.sh -o - | sh
+
+# 安装 dust
+https -qd https://github.com/bootandy/dust/releases/download/v1.2.4/dust-v1.2.4-x86_64-unknown-linux-gnu.tar.gz -o - | tar -xzf - --strip-components=1 -C /usr/local/bin
+
+# 安装 procs
+https -qd https://github.com/dalance/procs/releases/download/v0.14.10/procs-v0.14.10-x86_64-linux.zip -o /tmp/procs.zip
+unzip -q /tmp/procs.zip -d /usr/local/bin
 chmod +x /usr/local/bin/procs
-rm -rf procs.zip
+rm -f /tmp/procs.zip
 
 # 安装c/c++
 apt-get install -qq -y clang make cmake > /dev/null
@@ -36,7 +48,8 @@ apt-get install -qq -y clang make cmake > /dev/null
 # 安装Node.js
 https https://deb.nodesource.com/setup_20.x | bash
 apt-get install -y -qq nodejs
-npm install -g -s bun
+npm config set prefix ~/.local
+npm install -g -s bun pyright
 
 # 安装oh-my-zsh和常用插件
 https https://install.ohmyz.sh | bash
@@ -46,17 +59,22 @@ git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM
 sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting z extract copyfile you-should-use)/g' ~/.zshrc
 
 # 安装docker
-# apt-get install -y ca-certificates curl gnupg
-# install -m 0755 -d /etc/apt/keyrings
-# curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-# chmod a+r /etc/apt/keyrings/docker.gpg
-# echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-# apt-get update
-# apt-get install -y docker-ce-cli docker-compose-plugin
+apt-get install -y ca-certificates curl gnupg
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt-get update
+apt-get install -y docker-ce-cli docker-compose-plugin
 
-mv bash/.bashrc ~/
-mv vim/.vimrc ~/
-mv vim/autoload ~/.vim/
-mv git/.gitconfig ~/
+npm install -g -s bun
+
+cp vim/.vimrc ~/
+cp -r vim/autoload ~/.vim/
+cp git/.gitconfig ~/
 
 cat zsh/.zshrc >> ~/.zshrc
+# 修改主题
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="gozilla"/' ~/.zshrc
+
+usermod -s /usr/bin/zsh $USER

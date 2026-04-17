@@ -15,6 +15,9 @@ alias du='dust'
 alias df='duf'
 alias ls='exa'
 alias fd='fdfind'
+alias cc='claude'
+alias cx='codex'
+alias code='cmd.exe /c code'
 
 bindkey '^_' autosuggest-accept
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
@@ -34,3 +37,5 @@ HISTCONTROL=ignoredups:ignorespace
 
 # 忽略无用命令
 HISTIGNORE="ls:ll:pwd:exit:clear"
+
+export PATH="$HOME/.local/bin:$HOME/.npm/bin:/usr/local/bin:$PATH"

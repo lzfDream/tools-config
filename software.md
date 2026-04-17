@@ -53,3 +53,10 @@
 - zensical: 开源静态网站生成器
 - cultivation-word-simulator: 开源ai驱动的修仙世界模拟器
 - ml-sharp: 开源转化图片为3d图片
+- Penio: [屏幕绘制键盘鼠标回显工具](https://github.com/game1024/Penio)
+- Winhance：[开箱即用的 Windows 系统优化工具](https://github.com/memstechtips/Winhance)
+- PixelPlayer：[高颜值多功能的 Android 音乐播放器](https://github.com/theovilardo/PixelPlayer)
+- skill https://github.com/garrytan/gstack
+
+## 开源项目
+- https://github.com/skypjack/entt ecs游戏服务器框架
