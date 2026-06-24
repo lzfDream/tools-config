@@ -3,21 +3,25 @@ alias dop='docker compose'
 alias dopb='docker compose build'
 alias dopd='docker compose down'
 alias dopu='docker compose up -d'
+alias dopr='docker compose restart'
 alias dopl='dop logs -f -n 200'
 alias dops="docker ps --format 'table {{.Image}}\t{{.Names}}'"
 alias doexec='docker exec -it'
 alias dotestc='docker run -it --rm'
 
 alias c='clear'
-alias objdump='llvm-objdump-14 -M intel -S'
+alias cc='claude'
+alias cx='codex'
 alias cat='batcat --paging=never'
 alias du='dust'
 alias df='duf'
-alias ls='exa'
 alias fd='fdfind'
-alias cc='claude'
-alias cx='codex'
-alias code='cmd.exe /c code'
+alias g='git'
+alias ls='exa'
+alias objdump='llvm-objdump-14 -M intel -S'
+alias vim='nvim'
+alias tm='tmux'
+alias wcode='cmd.exe /c code'
 
 bindkey '^_' autosuggest-accept
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
@@ -36,6 +40,6 @@ setopt append_history
 HISTCONTROL=ignoredups:ignorespace
 
 # 忽略无用命令
-HISTIGNORE="ls:ll:pwd:exit:clear"
+HISTIGNORE="ls:ll:pwd:exit:clear:tm:wcode"
 
 export PATH="$HOME/.local/bin:$HOME/.npm/bin:/usr/local/bin:$PATH"

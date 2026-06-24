@@ -1,53 +1,64 @@
 [user]
-	email =
-	name =
+    email =
+    name =
 
 [init]
-	defaultBranch = master
+    defaultBranch = main
 
 # 中文支持
 [core]
-	quotepath = false
-	autocrlf = false # 关闭自动修改行尾符
+    quotepath = false
+    autocrlf = false # 关闭自动修改行尾符
+    editor = vim
 [i18n]
-	logoutputencoding = utf-8
-	commitencoding = utf-8
+    logoutputencoding = utf-8
+    commitencoding = utf-8
 
 # 开启颜色
 [color]
-	ui = true
+    ui = true
 
 # 合并冲突diff风格
 [merge]
-	conflictstyle = diff3
+    conflictstyle = diff3
 
 # 默认仅推送当前分支
 [push]
-	default = simple
-	autoSetupRemote = true
+    default = simple
+    autoSetupRemote = true
 
 # 记住密码
 [credential]
-	helper = store
+    helper = store
 
 # 自动修正指令
 [help]
-	autocorrect = 1
+    autocorrect = 1
 
 # 指令别名
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	s = status
-	co = checkout
-	cob = checkout -b
-	ci = commit
-	cim = commit -m
-	b = branch
-	db = branch -D
-	p = pull -p
-	a = add
-	aa = add --all :/
-	diffc = diff --cached
-	clear = reset --hard
-	ig = update-index --assume-unchanged
-	igc = update-index --no-assume-unchanged
+    a = add
+    aa = add --all :/
+    b = branch
+    bd = branch -D
+    co = checkout
+    cob = checkout -b
+    cim = commit -m
+    clear = reset --hard
+    d = diff
+    dc = diff --cached
+    ig = update-index --assume-unchanged
+    igc = update-index --no-assume-unchanged
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    p = pull -p
+    s = status
+    sw = switch
+
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+
+[http]
+    sslVerify = false
