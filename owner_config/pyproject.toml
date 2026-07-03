@@ -1,0 +1,23 @@
+[project]
+name = "owner_config"
+version = "0.1.0"
+description = "本地配置文件管理工具"
+readme = "README.md"
+requires-python = "==3.12.10"
+dependencies = [
+    "PyYAML",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+# 生成uv.lock时使用镜像源
+[[tool.uv.index]]
+url = "https://mirrors.aliyun.com/pypi/simple/"
+default = true

@@ -1,0 +1,5 @@
+projects:
+  - name: test
+    conf_dir: /d/test
+    files:
+      - dev.yaml

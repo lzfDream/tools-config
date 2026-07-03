@@ -1,0 +1,22 @@
+line-length = 120  # 代码最大行宽
+
+[lint]
+ignore = [         # 忽略的规则
+    "UP015",       # open "r"模式不写参数
+]
+select = [         # 选择的规则
+    "F",
+    "E",
+    "W",
+    "UP",
+]
+
+[format]
+docstring-code-format = true
+
+[lint.flake8-import-conventions.aliases]
+ErrorCode = "err"
+
+[lint.isort]
+combine-as-imports = true
+lines-after-imports = 2
