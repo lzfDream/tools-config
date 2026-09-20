@@ -1,0 +1,29 @@
+{
+  "name": "owner-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "build:cached": "node scripts/build-if-needed.mjs",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "dev": "npm run build:cached && node --watch dist/src/server.js",
+    "start": "./deploy.sh start"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "@lucide/vue": "^1.31.0",
+    "ansi-to-html": "^0.7.2",
+    "cheerio": "^1.1.2",
+    "element-plus": "^2.14.3",
+    "iconv-lite": "^0.7.3",
+    "vue": "^3.5.40",
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "typescript": "^5.9.0",
+    "vite": "^8.1.5"
+  }
+}

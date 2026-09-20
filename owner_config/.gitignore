@@ -1,5 +1,8 @@
-.codegraph
 __pycache__
 state/
 TODO.md
 .env
+node_modules/
+dist/
+web-dist/
+data/jenkins.yaml
