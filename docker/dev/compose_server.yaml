@@ -1,13 +1,11 @@
 name: dev
 
 services:
-  s1:
-    image: s1:latest
+  ubuntu:
+    image: ubuntu-dev:latest
     build:
       context: ../../
       dockerfile: docker/dev/Dockerfile
-    container_name: s1
-    hostname: l
     restart: always
     command: sh -c 'trap "exit" TERM INT; sleep infinity & wait'
     ports:

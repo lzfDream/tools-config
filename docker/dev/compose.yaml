@@ -1,8 +1,5 @@
 name: dev
 
-include:
-  # - compose_server.yaml
-
 services:
   mysql:
     image: mysql:8.0
@@ -30,18 +27,3 @@ services:
         target: /data
     command: redis-server --requirepass ${REDIS_PASSWORD}
     # profiles: ["redis"]
-
-  gitea:
-    image: gitea/gitea:1.21
-    ports:
-      # Web 访问端口
-      - "${GITEA_PORT}:3000"
-      # SSH 端口（用于 git clone）
-      - "${GITEA_SSH_PORT}:22"
-    volumes:
-      - type: bind
-        source: ../test/gitea-data
-        target: /data
-    environment:
-      - TZ=Asia/Shanghai
-    profiles: ["git"]
