@@ -21,12 +21,9 @@ if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
 fi
 
 # 复制vim配置
-if [ -f vim/.vimrc ]; then
-    cp vim/.vimrc ~/
-fi
-if [ -d vim/autoload ]; then
+if [ -d ~/.config/nvim ]; then
     mkdir -p ~/.vim
-    cp -r vim/autoload ~/.vim/
+    cp vim/init.vim ~/.config/nvim/init.vim
 fi
 
 # 复制git配置

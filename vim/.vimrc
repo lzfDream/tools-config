@@ -34,8 +34,6 @@ set autoread
 set showmatch
 set list
 set listchars=tab:>-,trail:-,
-" more colors
-" set termguicolors
 
 let mapleader = "-"
 nnoremap <leader>w :w<CR>

@@ -1,51 +1,445 @@
 {
-    // 通用设置
-    "editor.fontSize": 15,
-    "editor.tabSize": 4,
-    "editor.detectIndentation": true, // 该项为true时 会根据打开文件自动检测tabSize和insertSpaces
-    "extensions.closeExtensionDetailsOnViewChange": false,
-    "editor.renderFinalNewline": false,
-    "editor.formatOnPaste": true,
-    "editor.formatOnType": true,
-    "editor.renderWhitespace": "all", // 显示tab和space
-    "editor.renderControlCharacters": false,
-    "editor.minimap.renderCharacters": false,
-    "editor.wordWrap": "on",
-    "diffEditor.renderSideBySide": true,
-    "editor.suggestSelection": "first",
-    "editor.suggest.localityBonus": true,
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": true,
-        "strings": true
-    },
-    "editor.acceptSuggestionOnEnter": false, // 按回车键不会补全
-    "editor.suggest.snippetsPreventQuickSuggestions": false, // 解决代码片段里不能提示补全
-    "workbench.startupEditor": "newUntitledFile",
-    // 文件设置
-    "files.enableTrash": false,
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 300000,
-    "files.eol": "\n", // 换行符
-    "files.trimTrailingWhitespace": true,
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe", // 设置终端为gitbash
+    // ==========================================================================
+    // VSCode 用户设置
+    // 结构：一、通用配置   二、语言配置   三、各插件单独配置
+    // 排序规则：先分区，再按分组，组内按设置项名称字母序（不区分大小写）
+    // 数组元素的顺序保持原样（如 clangd.arguments、cSpell.userWords 等）
+    // ==========================================================================
+    // ==========================================================================
+    // 一、通用配置
+    // ==========================================================================
+    // --------------------------------------------------------------------------
+    // 1.1 窗口与外观
+    // --------------------------------------------------------------------------
+    "window.commandCenter": false,
+    "window.dialogStyle": "custom",
     "window.zoomLevel": 2,
+    "workbench.colorTheme": "One Dark Pro Flat",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.layoutControl.enabled": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    // --------------------------------------------------------------------------
+    // 1.2 编辑器
+    // --------------------------------------------------------------------------
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.autoClosingBrackets": "always", // 自动添加括号
+    "editor.bracketPairColorization.enabled": true, // 彩色括号
+    "editor.cursorBlinking": "expand",
+    "editor.detectIndentation": true, // 该项为true时 会根据打开文件自动检测tabSize和insertSpaces
+    "editor.foldingMaximumRegions": 50000,
+    "editor.fontSize": 15,
+    "editor.formatOnPaste": true, // 粘贴后自动格式化
+    "editor.formatOnSaveMode": "modifications", // 只格式化修改的行
+    "editor.formatOnType": true, // 输入后自动格式化
+    "editor.guides.bracketPairs": true,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.inlayHints.padding": true,
+    "editor.matchBrackets": "always", // 显示括号匹配
+    "editor.minimap.renderCharacters": false,
+    "editor.quickSuggestions": {
+        "comments": true,
+        "other": true,
+        "strings": true
+    }, // 解决代码片段里不能提示补全
+    "editor.rename.enablePreview": false,
+    "editor.renderControlCharacters": false,
+    "editor.renderFinalNewline": "on",
+    "editor.renderWhitespace": "all", // 显示tab和space
+    "editor.smoothScrolling": true,
+    "editor.stickyScroll.enabled": true,
+    "editor.suggest.insertMode": "replace",
+    "editor.suggest.localityBonus": true,
+    "editor.tabSize": 4,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.wordWrap": "on",
+    // --------------------------------------------------------------------------
+    // 1.3 文件
+    // --------------------------------------------------------------------------
+    "files.autoGuessEncoding": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.enableTrash": false,
+    "files.eol": "\n", // 换行符
+    "files.insertFinalNewline": true, // 文件尾插入空行
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true, // 去除行尾多余空格
+    // --------------------------------------------------------------------------
+    // 1.4 资源管理器与面包屑
+    // --------------------------------------------------------------------------
+    "breadcrumbs.enabled": true,
+    "explorer.compactFolders": true,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "workbench.enableExperiments": false,
-    "workbench.activityBar.visible": true,
-    "breadcrumbs.enabled": true,
-    "http.proxySupport": "on",
-    "update.mode": "manual", // 禁用自动更新 手动更新
-    "extensions.autoUpdate": true, // 扩展自动更新
-    "extensions.ignoreRecommendations": true, // 不显示扩展的建议通知
-    "remote.SSH.remotePlatform": {
-        "192.168.182.128": "linux"
+    "explorer.copyRelativePathSeparator": "/",
+    "explorer.excludeGitIgnore": true,
+    // --------------------------------------------------------------------------
+    // 1.5 工作台与编辑器标签页
+    // --------------------------------------------------------------------------
+    "notebook.compactView": true,
+    "notebook.diff.enablePreview": false,
+    "workbench.editor.editorActionsLocation": "titleBar",
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.pinnedTabsOnSeparateRow": true,
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "workbench.editorAssociations": {
+        "*.md": "default"
     },
+    "workbench.enableExperiments": false,
+    "workbench.list.smoothScrolling": true,
+    "workbench.startupEditor": "none",
+    // --------------------------------------------------------------------------
+    // 1.6 终端
+    // --------------------------------------------------------------------------
+    "terminal.external.windowsExec": "D:\\software\\git\\bin\\bash.exe",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.defaultProfile.osx": "fish",
+    "terminal.integrated.defaultProfile.windows": "git",
+    "terminal.integrated.enableMultiLinePasteWarning": "auto",
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt": {
+            "args": [],
+            "icon": "terminal-cmd",
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ]
+        },
+        "git": {
+            "args": [
+                "--login",
+                "-i"
+            ],
+            "icon": "terminal-bash",
+            "path": "D:\\software\\git\\bin\\bash.exe"
+        },
+        "PowerShell": {
+            "icon": "terminal-powershell",
+            "source": "PowerShell"
+        },
+        "wsl": {
+            "args": [
+                "-d",
+                "Ubuntu-24.04"
+            ],
+            "icon": "terminal-bash",
+            "path": "wsl.exe"
+        }
+    },
+    "terminal.integrated.sendKeybindingsToShell": true,
+    // --------------------------------------------------------------------------
+    // 1.7 搜索
+    // --------------------------------------------------------------------------
+    "search.exclude": {
+        "**/*.code-search": true,
+        "**/bower_components": true,
+        "**/node_modules": true
+    },
+    "search.followSymlinks": false,
     "search.showLineNumbers": true,
-    // tabnine
-    "tabnine.experimentalAutoImports": true,
-    // vim 插件
+    // --------------------------------------------------------------------------
+    // 1.8 更新与扩展
+    // --------------------------------------------------------------------------
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false, // 扩展自动更新
+    "extensions.closeExtensionDetailsOnViewChange": false,
+    "extensions.ignoreRecommendations": true, // 不显示扩展的建议通知
+    "update.enableWindowsBackgroundUpdates": false,
+    "update.mode": "none", // 禁用自动更新 手动更新
+    "update.showReleaseNotes": false,
+    // --------------------------------------------------------------------------
+    // 1.9 远程、安全与设置同步
+    // --------------------------------------------------------------------------
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "settingsSync.ignoredSettings": [
+        "vim.useCtrlKeys",
+        "terminal.external.windowsExec"
+    ],
+    // --------------------------------------------------------------------------
+    // 1.10 聊天与差异编辑器
+    // --------------------------------------------------------------------------
+    "chat.agent.enabled": false,
+    "chat.tips.enabled": false,
+    "diffEditor.maxComputationTime": 0,
+    // ==========================================================================
+    // 二、语言配置（语言级覆盖 + 对应语言服务器）
+    // ==========================================================================
+    // --------------------------------------------------------------------------
+    // 2.1 C / C++
+    // --------------------------------------------------------------------------
+    "[cpp]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+    "C_Cpp.inlayHints.parameterNames.enabled": true,
+    "C_Cpp.inlayHints.referenceOperator.enabled": true,
+    "C_Cpp.inlayHints.referenceOperator.showSpace": true,
+    "clangd.arguments": [
+        "--background-index",
+        "-j=12",
+        "--clang-tidy",
+        "--clang-tidy-checks=performance-*,bugprone-*",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=never",
+        "--pch-storage=disk"
+    ],
+    "clangd.detectExtensionConflicts": false,
+    "clangd.fallbackFlags": [
+        "-std=c++11"
+    ],
+    "lldb.suppressUpdateNotifications": true,
+    // --------------------------------------------------------------------------
+    // 2.2 C#
+    // --------------------------------------------------------------------------
+    "omnisharp.useModernNet": false,
+    // --------------------------------------------------------------------------
+    // 2.3 CSS
+    // --------------------------------------------------------------------------
+    "css.format.spaceAroundSelectorSeparator": true,
+    "css.lint.duplicateProperties": "warning",
+    "css.lint.float": "warning",
+    // --------------------------------------------------------------------------
+    // 2.4 Go
+    // --------------------------------------------------------------------------
+    "[go]": {
+        // 保存时的动作
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        // 格式化
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "go.autocompleteUnimportedPackages": true, // 提示中包含未导入的包
+    "go.buildOnSave": "workspace",
+    "go.coverOnSave": false,
+    "go.docsTool": "gogetdoc",
+    "go.formatFlags": [
+        "-w"
+    ],
+    "go.formatTool": "gofmt",
+    // gocode使用的包查找规则
+    "go.gocodePackageLookupMode": "go",
+    // 转到接口实现 依赖于gopls
+    "go.gotoSymbol.includeImports": true,
+    "go.inferGopath": true,
+    // 关闭 golint 错误提示
+    "go.lintFlags": [
+        "--disable=all",
+        "--enable=errcheck"
+    ],
+    "go.lintOnSave": "package",
+    "go.lintTool": "golint",
+    "go.testOnSave": false,
+    "go.toolsManagement.autoUpdate": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "go.vetOnSave": "package",
+    "gopls": {
+        "completeUnimported": true, // 自动完成未导入的包
+        "deepCompletion": true, // 启用深度完成
+        // If true, enable additional analyses with staticcheck.
+        // Warning: This will significantly increase memory usage.
+        "staticcheck": false,
+        // Add parameter placeholders when completing a function.
+        "usePlaceholders": false
+    },
+    // --------------------------------------------------------------------------
+    // 2.5 HTML
+    // --------------------------------------------------------------------------
+    "[html]": {
+        "editor.insertSpaces": true,
+        "editor.suggest.insertMode": "replace",
+        "editor.tabSize": 2
+    },
+    // --------------------------------------------------------------------------
+    // 2.6 JavaScript / TypeScript
+    // --------------------------------------------------------------------------
+    "[javascript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "js/ts.inlayHints.enumMemberValues.enabled": true,
+    "js/ts.referencesCodeLens.enabled": true,
+    "js/ts.suggestionActions.enabled": true,
+    // --------------------------------------------------------------------------
+    // 2.7 Lua
+    // --------------------------------------------------------------------------
+    "[lua]": {
+        "editor.quickSuggestions": {
+            "comments": true,
+            "other": true,
+            "strings": true
+        }
+    },
+    // --------------------------------------------------------------------------
+    // 2.8 Markdown
+    // --------------------------------------------------------------------------
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "other": "on",
+            "strings": "on"
+        },
+        "editor.unicodeHighlight.ambiguousCharacters": true,
+        "editor.wordWrap": "on"
+    },
+    // --------------------------------------------------------------------------
+    // 2.10 Python
+    // --------------------------------------------------------------------------
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true
+    },
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.enablePerfTelemetry": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.languageServer": "Pylance",
+    // ==========================================================================
+    // 三、各插件单独配置
+    // ==========================================================================
+    // --------------------------------------------------------------------------
+    // 3.1 better-comments
+    // --------------------------------------------------------------------------
+    "better-comments.highlightPlainText": true,
+    // --------------------------------------------------------------------------
+    // 3.3 Bookmarks
+    // --------------------------------------------------------------------------
+    "bookmarks.sideBar.expanded": true,
+    // --------------------------------------------------------------------------
+    // 3.4 CMake
+    // --------------------------------------------------------------------------
+    "cmake.autoSelectActiveFolder": false,
+    "cmake.automaticReconfigure": false,
+    "cmake.configureOnEdit": false,
+    "cmake.configureOnOpen": false,
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "cmake.showOptionsMovedNotification": false,
+    // --------------------------------------------------------------------------
+    // 3.5 CppHelper
+    // --------------------------------------------------------------------------
+    "CppHelper.ContextCopyImplementation": false,
+    "CppHelper.ContextCreateHeaderGuard": false,
+    "CppHelper.ContextCreateImplementationHere": false,
+    // --------------------------------------------------------------------------
+    // 3.6 cSpell
+    // --------------------------------------------------------------------------
+    "cSpell.blockCheckingWhenTextChunkSizeGreaterThan": 5000,
+    "cSpell.enabledNotifications": {
+        "Average Word Length too Long": false,
+        "Lines too Long": false,
+        "Maximum Word Length Exceeded": false
+    },
+    "cSpell.userWords": [
+        "cdkey",
+        "DCMAKE",
+        "dvadmin",
+        "getall",
+        "GPMDB",
+        "IDFA",
+        "IMEI",
+        "noncopyable",
+        "pswd",
+        "pthread",
+        "spdlog",
+        "stdafx",
+        "tzone",
+        "unban",
+        "unwatch",
+        "venv",
+        "viewset"
+    ],
+    // --------------------------------------------------------------------------
+    // 3.8 Docker / 容器（containers.* 与 docker.* 同属 Docker 扩展）
+    // --------------------------------------------------------------------------
+    "containers.containers.sortBy": "Label",
+    "docker.containers.sortBy": "Label",
+    // --------------------------------------------------------------------------
+    // 3.9 EnglishChineseDictionary
+    // --------------------------------------------------------------------------
+    "EnglishChineseDictionary.enableHover": true,
+    // --------------------------------------------------------------------------
+    // 3.10 Git（内置扩展）
+    // --------------------------------------------------------------------------
+    "git.autofetch": true,
+    "git.autorefresh": false,
+    "git.confirmSync": false,
+    "git.ignoreLegacyWarning": true,
+    "git.ignoreMissingGitWarning": true,
+    "git.mergeEditor": false,
+    "git.openRepositoryInParentFolders": "never",
+    "git.path": "D:\\software\\Git\\bin\\git.exe",
+    // --------------------------------------------------------------------------
+    // 3.11 GitLens
+    // --------------------------------------------------------------------------
+    "gitlens.advanced.messages": {
+        "suppressGitVersionWarning": true
+    },
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.codeLens.scopes": [
+        "containers",
+        "document"
+    ],
+    "gitlens.gitCommands.skipConfirmations": [
+        "fetch:command",
+        "stash-push:command",
+        "switch:command"
+    ],
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.launchpad.indicator.enabled": false,
+    "gitlens.statusBar.enabled": false,
+    "gitlens.views.commitDetails.files.layout": "tree",
+    "gitlens.views.commits.pullRequests.enabled": false,
+    "gitlens.views.repositories.avatars": false,
+    "gitlens.views.repositories.includeWorkingTree": true,
+    // --------------------------------------------------------------------------
+    // 3.12 LeetCode
+    // --------------------------------------------------------------------------
+    "leetcode.defaultLanguage": "golang",
+    "leetcode.endpoint": "leetcode-cn",
+    "leetcode.hint.commandShortcut": false,
+    "leetcode.hint.commentDescription": false,
+    "leetcode.hint.configWebviewMarkdown": false,
+    "leetcode.workspaceFolder": "/Users/l/code/go",
+    // --------------------------------------------------------------------------
+    // 3.13 Live Server
+    // --------------------------------------------------------------------------
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.wait": 50,
+    // --------------------------------------------------------------------------
+    // 3.18 Trae
+    // --------------------------------------------------------------------------
+    "trae.chatLanguage": "cn",
+    "trae.enableCodelens": {
+        "enableInlineDocumentation": false,
+        "enableInlineExplain": false
+    },
+    // --------------------------------------------------------------------------
+    // 3.19 trailing-spaces
+    // --------------------------------------------------------------------------
+    "trailing-spaces.backgroundColor": "rgba(255,0,0,0.7)",
+    "trailing-spaces.highlightCurrentLine": false, // 用插件只显示行尾空格不删除
+    // --------------------------------------------------------------------------
+    // 3.20 Vim
+    // --------------------------------------------------------------------------
+    "vim.foldfix": true, // 折叠处移动不会自动展开代码
+    "vim.hlsearch": true, // s搜索高亮
     "vim.insertModeKeyBindings": [
         {
             "before": [
@@ -54,113 +448,8 @@
             ],
             "after": [
                 "<ESC>"
-            ],
+            ]
         }
-    ], // 关闭vim的ctrl快捷键
-    "vim.useSystemClipboard": true, // 折叠处移动不会自动展开代码
-    "vim.hlsearch": true, // s搜索高亮
-    "vim.foldfix": true,
-    // git
-    "git.autorefresh": false,
-    "git.path": "C:\\Program Files\\Git\\cmd\\git.exe",
-    "files.exclude": {
-        "**/.git": false
-    },
-    // 同步设置插件
-    "sync.gist": "54a1ba447f62f4e31f70bf69d046958f",
-    // cpp
-    "C_Cpp.updateChannel": "Insiders",
-    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Google,  IndentWidth:4}",
-    // go
-    "[go]": {
-        // 格式化
-        "editor.formatOnSave": true,
-        "editor.insertSpaces": false,
-        "editor.tabSize": 4,
-        // 保存时的动作
-        "editor.codeActionsOnSave": {
-            // 自动导入包
-            "source.organizeImports": true,
-            "source.fixAll": true,
-        },
-    },
-    "[go.mod]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true,
-        },
-    },
-    "go.useCodeSnippetsOnFunctionSuggest": true,
-    "go.autocompleteUnimportedPackages": true, // 提示中包含未导入的包
-    // gocode使用的包查找规则
-    "go.gocodePackageLookupMode": "go",
-    // 转到接口实现 依赖于gopls
-    "go.gotoSymbol.includeImports": true,
-    "go.inferGopath": true,
-    "go.formatTool": "gofmt",
-    "go.formatFlags": [
-        "-s",
-        "-w"
     ],
-    "go.lintTool": "golint",
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.docsTool": "gogetdoc",
-    "go.buildOnSave": "workspace",
-    "go.lintOnSave": "package",
-    "go.vetOnSave": "package",
-    "go.coverOnSave": false,
-    "gopls": {
-        // Add parameter placeholders when completing a function.
-        "usePlaceholders": false,
-        // If true, enable additional analyses with staticcheck.
-        // Warning: This will significantly increase memory usage.
-        "staticcheck": false,
-        "completeUnimported": true, // 自动完成未导入的包
-        "deepCompletion": true,    // 启用深度完成
-    },
-    // 关闭 golint 错误提示
-    "go.lintFlags": [
-        "--disable=all",
-        "--enable=errcheck"
-    ],
-    "go.testOnSave": false,
-    "go.languageServerExperimentalFeatures": {
-    },
-    // html
-    "[html]": {
-        "editor.suggest.insertMode": "replace",
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.renderFinalNewline": true,
-    },
-    // javascript
-    "[javascript]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2,
-        "editor.renderFinalNewline": true,
-    },
-    "javascript.suggestionActions.enabled": true,
-    "javascript.referencesCodeLens.enabled": true,
-    "[cpp]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4,
-        "editor.renderFinalNewline": true,
-    },
-    "terminal.integrated.rendererType": "dom",
-    "files.insertFinalNewline": true,
-    "notebook.diff.enablePreview": false,
-    "workbench.editor.enablePreview": false,
-    "editor.rename.enablePreview": false,
-    "editor.formatOnSaveMode": "modifications",
-    "leetcode.endpoint": "leetcode-cn",
-    "leetcode.workspaceFolder": "/Users/l/code/go",
-    "leetcode.defaultLanguage": "golang",
-    "leetcode.hint.configWebviewMarkdown": false,
-    "leetcode.hint.commentDescription": false,
-    "leetcode.hint.commandShortcut": false,
-    "cSpell.userWords": [
-        "recal",
-        "stageid"
-    ],
-    "git.autofetch": true,
+    "vim.useCtrlKeys": false
 }

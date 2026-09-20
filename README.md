@@ -1,7 +1,5 @@
 # tools-config
 ## vim
-1. `cp -r vim/autoload ~/.vim`
-2. `cp vim/.vimrc ~/.vimrc`
 1. `cp vim/init.vim ~/.config/nvim/`
 
 ## vscode
